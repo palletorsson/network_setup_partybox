@@ -1,4 +1,4 @@
-network_setup_partybox
+network setup partybox
 ======================
 
-network setup for partybox
+$ sudo apt-get install hostapd
