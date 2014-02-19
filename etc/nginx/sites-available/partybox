@@ -1,19 +1,19 @@
 server {
         listen 80; ## listen for ipv4; this line is default and implied
 
-        root /home/pi/Django/partybox/partybox/partybox;
+        root /home/pi/partybox/partybox/partybox;
         index index.html index.htm;
 
         # Make site accessible from http://localhost/
         server_name localhost;
 
         location /static/  { # STATIC URL
-                alias /home/pi/Django/partybox/partybox/partybox/statics;
+                alias /home/pi/partybox/partybox/partybox/statics;
         }
 
 
         location /media/ { # MEDIA URL
-                alias /home/pi/Django/partybox/partybox/partybox/media/;
+                alias /home/pi/partybox/partybox/partybox/media/;
         }
 
         location / {
