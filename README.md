@@ -27,6 +27,7 @@ wmm_enabled=0
 
 Setting up a DHCP Server
 
+* $ sudo apt-get install isc-dhcp-server
 * $ sudo nano /etc/dhcp/dhclient.conf 
 
 <pre> 
@@ -53,11 +54,6 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
 Intermezzo
 * sudo reboot and check to see that everything seem to work.
-
-Enable dhcp-server
-
-* $ sudo apt-get install isc-dhcp-server
-* $ sudo nano /etc/default/isc-dhcp-server
 
 Define a subnet the wireless card.
 * $ sudo nano /etc/network/interfaces
