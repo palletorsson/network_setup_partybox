@@ -16,6 +16,13 @@ Install new packages
 Setting up a hostadp 
 * $ sudo nano /etc/hostapd/hostapd.conf 
 
+<pre> interface=wlan0
+ssid=partyBox
+hw_mode=g
+channel=6
+auth_algs=1
+wmm_enabled=0 </pre>
+
 Setting up a DHCP Server
 * $ sudo nano /etc/dhcp/dhclient.conf 
 <pre> mjau </pre>
