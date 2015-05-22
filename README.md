@@ -45,6 +45,16 @@ interface wlan0;
 }
 </pre>
 
+Intermezzo
+
+* sudo reboot
+* sudo nano /etc/default/hostapd
+<pre> 
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+</pre>
+
+
+
 Enable dhcp-server on the pi 
 
 * $ sudo apt-get install isc-dhcp-server
