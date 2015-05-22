@@ -46,13 +46,13 @@ subnet 192.168.42.0 netmask 255.255.255.0 {
 </pre>
 
 * sudo nano /etc/default/hostapd
+
 <pre> 
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 </pre>
 
-
 Intermezzo
-* sudo reboot and check to see that everything seem to work ok
+* sudo reboot and check to see that everything seem to work.
 
 Enable dhcp-server
 
@@ -65,7 +65,7 @@ Define a subnet the wireless card.
 * $ sudo nano /etc/sysctl.conf
 * $ sudo service hostapd status
 * $ sudo service isc-dhcp-server status
-* 
--Setting up a Wireless Access Point
--Setting up an rPi as a Router
+
+Setting up a Wireless Access Point
+Setting up an rPi as a Router
 -Enabling IP Forwarding
