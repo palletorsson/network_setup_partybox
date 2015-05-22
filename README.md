@@ -59,9 +59,17 @@ Define a subnet the wireless card.
 * $ sudo nano /etc/network/interfaces
 
 <pre> 
+ 
+#allow-hotplug wlan0
+
 iface wlan0 inet static
-address 10.10.0.1
-netmask 255.255.255.0
+        address 192.168.42.1
+        netmask 255.255.255.0
+        broadcast 255.0.0.0
+        
+#up iptables-restore < /etc/iptables.ipv4.nat
+pre-up iptables-restore < /etc/iptables.rules
+ 
 </pre>
 
 * $ sudo nano /etc/sysctl.conf
