@@ -45,15 +45,14 @@ interface wlan0;
 }
 </pre>
 
-Intermezzo
-
-* sudo reboot
 * sudo nano /etc/default/hostapd
 <pre> 
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 </pre>
 
 
+Intermezzo
+* sudo reboot
 
 Enable dhcp-server on the pi 
 
