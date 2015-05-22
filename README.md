@@ -11,16 +11,19 @@ Update
 * $ sudo apt-get update
 
 Install new packages
-* $ sudo apt-get install hostapd isc-dhcp-server dnsmasq 
+* $ sudo apt-get install hostapd dnsmasq 
 
 Setting up a hostadp 
 * $ sudo nano /etc/hostapd/hostapd.conf 
-* 
+
 Setting up a DHCP Server
 * $ sudo nano /etc/dhcp/dhclient.conf 
+<pre> mjau </pre>
+Enable dhcp-server on the pi 
+* $ sudo apt-get install isc-dhcp-server
 * $ sudo nano /etc/default/isc-dhcp-server
 
-Define a subnet for our wireless card.
+Define a subnet the wireless card.
 * $ sudo nano /etc/network/interfaces
 
 * $ sudo nano /etc/sysctl.conf
