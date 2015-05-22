@@ -52,9 +52,9 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 
 
 Intermezzo
-* sudo reboot
+* sudo reboot and check to see that everything seem to work ok
 
-Enable dhcp-server on the pi 
+Enable dhcp-server
 
 * $ sudo apt-get install isc-dhcp-server
 * $ sudo nano /etc/default/isc-dhcp-server
