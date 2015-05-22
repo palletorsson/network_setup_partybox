@@ -26,7 +26,9 @@ wmm_enabled=0
 </pre>
 
 Setting up a DHCP Server
+
 * $ sudo nano /etc/dhcp/dhclient.conf 
+
 <pre> mjau </pre>
 Enable dhcp-server on the pi 
 * $ sudo apt-get install isc-dhcp-server
