@@ -29,8 +29,24 @@ Setting up a DHCP Server
 
 * $ sudo nano /etc/dhcp/dhclient.conf 
 
-<pre> mjau </pre>
+<pre> 
+authoritative; #be careful with this setting
+ddns-update-style none;
+default-lease-time 600;
+max-lease-time 7200;
+log-facility local7;
+
+#for the wireless network on wlan0
+subnet 10.10.0.0 netmask 255.255.255.0 {
+range 10.10.0.25 10.10.0.50;
+option domain-name-servers 8.8.8.8, 8.8.4.4;
+option routers 10.10.0.1;
+interface wlan0;
+}
+</pre>
+
 Enable dhcp-server on the pi 
+
 * $ sudo apt-get install isc-dhcp-server
 * $ sudo nano /etc/default/isc-dhcp-server
 
