@@ -58,6 +58,12 @@ Intermezzo
 Define a subnet the wireless card.
 * $ sudo nano /etc/network/interfaces
 
+<pre> 
+iface wlan0 inet static
+address 10.10.0.1
+netmask 255.255.255.0
+</pre>
+
 * $ sudo nano /etc/sysctl.conf
 * $ sudo service hostapd status
 * $ sudo service isc-dhcp-server status
