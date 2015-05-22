@@ -1,12 +1,32 @@
 network setup partybox
 ======================
 
+(http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/)
+
+* Prepare your Raspberry PI with a SD card with a RASPBIAN
+* Boot and expand filesystem, change timezone, etc, reboot
+* Log into the PI using ssh ( user:pi password:raspberry )
+
+Update
 * $ sudo apt-get update
-* $ sudo apt-get install hostapd isc-dhcp-server dnsmasq nginx
-* $ sudo nano /etc/hostapd/hostapd.conf
+
+Install new packages
+* $ sudo apt-get install hostapd isc-dhcp-server dnsmasq 
+
+Setting up a hostadp 
+* $ sudo nano /etc/hostapd/hostapd.conf 
+* 
+Setting up a DHCP Server
 * $ sudo nano /etc/dhcp/dhclient.conf 
 * $ sudo nano /etc/default/isc-dhcp-server
+
+Define a subnet for our wireless card.
 * $ sudo nano /etc/network/interfaces
+
 * $ sudo nano /etc/sysctl.conf
 * $ sudo service hostapd status
 * $ sudo service isc-dhcp-server status
+* 
+-Setting up a Wireless Access Point
+-Setting up an rPi as a Router
+-Enabling IP Forwarding
