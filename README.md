@@ -6,6 +6,7 @@ I used these referances to set up the network:
 * http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
 * http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/
 * http://elinux.org/RPI-Wireless-Hotspot
+* http://andrewmichaelsmith.com/2013/08/raspberry-pi-wi-fi-honeypot/
 
 * Prepare your Raspberry PI with a SD card with a RASPBIAN:
 https://www.raspberrypi.org/documentation/installation/installing-images/README.md
