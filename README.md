@@ -97,14 +97,15 @@ Define a subnet the wireless card.
 auto lo
 
 iface lo inet loopback
-iface eth0 inet manual
+iface eth0 inet dhcp
 
 iface wlan0 inet static
-        address 192.168.42.1
-        netmask 255.255.255.0
-        broadcast 255.0.0.0
-        
+  address 10.0.0.1
+  netmask 255.255.255.0
+  broadcast 255.0.0.0
+
 pre-up iptables-restore < /etc/iptables.rules
+
 </pre>
 
 * $ sudo nano /etc/sysctl.conf
