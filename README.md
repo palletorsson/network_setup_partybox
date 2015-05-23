@@ -10,7 +10,7 @@ network setup partybox
 Update
 * $ sudo apt-get update
 
-Install new packages
+Install hostapd
 * $ sudo apt-get install hostapd dnsmasq 
 
 Setting up a hostadp 
@@ -24,6 +24,20 @@ hw_mode=g
 channel=6
 auth_algs=1
 wmm_enabled=0 
+</pre>
+
+Install dnsmasq
+* $ sudo apt-get install dnsmasq 
+* $ sudo nano /etc/dnsmasq.conf
+
+<pre>
+
+log-facility=/var/log/dnsmasq.log
+address=/#/192.168.0.1
+interface=wlan0
+dhcp-range=192.168.0.10,192.168.0.254,12h
+no-resolv
+log-queries
 </pre>
 
 Setting up a DHCP Server
