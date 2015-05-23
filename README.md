@@ -27,7 +27,10 @@ auth_algs=1
 wmm_enabled=0 
 </pre>
 
-Reboot and 
+Reboot see if it work without error   
+* $ /etc/init.d/hostapd start
+* $ /etc/init.d/hostapd stop
+* $ /etc/init.d/hostapd restart
 
 Install dnsmasq
 * $ sudo apt-get install dnsmasq 
