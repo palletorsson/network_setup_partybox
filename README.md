@@ -60,16 +60,17 @@ Define a subnet the wireless card.
 
 <pre> 
  
-#allow-hotplug wlan0
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
 
 iface wlan0 inet static
         address 192.168.42.1
         netmask 255.255.255.0
         broadcast 255.0.0.0
         
-#up iptables-restore < /etc/iptables.ipv4.nat
 pre-up iptables-restore < /etc/iptables.rules
- 
 </pre>
 
 * $ sudo nano /etc/sysctl.conf
