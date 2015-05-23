@@ -26,7 +26,12 @@ auth_algs=1
 wmm_enabled=0 
 </pre>
 
-Reboot see if it work without error, Check hostapd
+Reboot 
+* $ sudo reboot
+
+Log in again see that the Pi start without errors
+
+Tips: Check hostapd
 * $ sudo service hostapd status
 * $ sudo hostapd /etc/hostapd/hostapd.conf
 
