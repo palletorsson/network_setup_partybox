@@ -18,6 +18,7 @@ Setting up a hostadp
 
 <pre> 
 interface=wlan0
+driver=nl80211
 ssid=partyBox
 hw_mode=g
 channel=6
