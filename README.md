@@ -1,8 +1,6 @@
 network setup partybox
 ======================
 
-(http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/)
-
 * Prepare your Raspberry PI with a SD card with a RASPBIAN
 * Boot and expand filesystem, change timezone, etc, reboot
 * Log into the PI using ssh ( user:pi password:raspberry )
@@ -27,7 +25,11 @@ auth_algs=1
 wmm_enabled=0 
 </pre>
 
-Reboot see if it work without error   
+Reboot see if it work without error, Check hostapd
+* $ sudo service hostapd status
+* $ sudo hostapd /etc/hostapd/hostapd.conf
+
+Start, stop, restart hostapd:
 * $ /etc/init.d/hostapd start
 * $ /etc/init.d/hostapd stop
 * $ /etc/init.d/hostapd restart
@@ -102,13 +104,11 @@ net.ipv4.ip_forward=1
 
 </pre>
 
-Check hostapd
-* $ sudo service hostapd status
-* $ sudo hostapd /etc/hostapd/hostapd.conf
 
 Check isc-dhcp-server
 * $ sudo service isc-dhcp-server status
 
-Setting up a Wireless Access Point
-Setting up an rPi as a Router
--Enabling IP Forwarding
+
+
+Referance:
+* http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
