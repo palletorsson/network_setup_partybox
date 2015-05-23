@@ -10,7 +10,7 @@ network setup partybox
 Update
 * $ sudo apt-get update
 
-Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox.
+Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox".
 
 * $ sudo apt-get install hostapd
 
