@@ -2,8 +2,9 @@ network setup partybox
 ======================
 
 * Prepare your Raspberry PI with a SD card with a RASPBIAN
-* Boot and expand filesystem, change timezone, etc, reboot
-* Log into the PI using ssh ( user:pi password:raspberry )
+* https://www.raspberrypi.org/documentation/installation/installing-images/README.md
+* Boot and expand filesystem, change timezone, etc and reboot
+* By being on the same network as the Pi you can log into by using ssh ( user:pi password:raspberry )
 
 Update
 * $ sudo apt-get update
