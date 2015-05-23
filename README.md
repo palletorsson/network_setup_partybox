@@ -11,7 +11,7 @@ Update
 
 Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox".
 
-* $ sudo apt-get install hostapd
+* $ sudo apt-get install bridge-utils hostapd
 
 Setting up a hostadp 
 * $ sudo nano /etc/hostapd/hostapd.conf 
