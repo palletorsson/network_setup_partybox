@@ -75,7 +75,18 @@ pre-up iptables-restore < /etc/iptables.rules
 </pre>
 
 * $ sudo nano /etc/sysctl.conf
+* Add the following line to the bottom of the file:
+<pre> 
+
+net.ipv4.ip_forward=1
+
+</pre>
+
+Check hostapd
 * $ sudo service hostapd status
+* $ sudo hostapd /etc/hostapd/hostapd.conf
+
+Check isc-dhcp-server
 * $ sudo service isc-dhcp-server status
 
 Setting up a Wireless Access Point
