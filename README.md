@@ -117,4 +117,5 @@ Check isc-dhcp-server
 
 
 Referance:
+* http://www.daveconroy.com/turn-your-raspberry-pi-into-a-wifi-hotspot-with-edimax-nano-usb-ew-7811un-rtl8188cus-chipset/
 * http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
