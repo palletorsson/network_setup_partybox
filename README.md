@@ -1,6 +1,11 @@
 network setup partybox
 ======================
 
+I used these referances to set up the network:
+* http://www.daveconroy.com/turn-your-raspberry-pi-into-a-wifi-hotspot-with-edimax-nano-usb-ew-7811un-rtl8188cus-chipset/
+* http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
+
+
 * Prepare your Raspberry PI with a SD card with a RASPBIAN:
 https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 * Boot and expand filesystem, change timezone, etc and reboot
@@ -114,8 +119,3 @@ net.ipv4.ip_forward=1
 Check isc-dhcp-server
 * $ sudo service isc-dhcp-server status
 
-
-
-Referance:
-* http://www.daveconroy.com/turn-your-raspberry-pi-into-a-wifi-hotspot-with-edimax-nano-usb-ew-7811un-rtl8188cus-chipset/
-* http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
