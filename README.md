@@ -10,7 +10,8 @@ network setup partybox
 Update
 * $ sudo apt-get update
 
-Install hostapd
+Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox.
+
 * $ sudo apt-get install hostapd dnsmasq 
 
 Setting up a hostadp 
@@ -25,6 +26,8 @@ channel=6
 auth_algs=1
 wmm_enabled=0 
 </pre>
+
+Reboot and 
 
 Install dnsmasq
 * $ sudo apt-get install dnsmasq 
