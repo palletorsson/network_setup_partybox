@@ -1,20 +1,21 @@
 server {
         listen 80; ## listen for ipv4; this line is default and implied
 
-        root /home/pi/partybox/partybox/partybox;
+        root /home/pi/partybox/partybox;
         index index.html index.htm;
 
         # Make site accessible from http://localhost/
         server_name localhost;
 
         location /static/  { # STATIC URL
-                alias /home/pi/partybox/partybox/partybox/statics;
+                alias /home/pi/partybox/partybox/static/;
         }
 
 
         location /media/ { # MEDIA URL
-                alias /home/pi/partybox/partybox/partybox/media/;
+                alias /home/pi/partybox/partybox/media/;
         }
+
 
         location / {
                 proxy_pass_header Server;
@@ -29,3 +30,4 @@ server {
         }
         error_page 500 502 503 504 /media/50x.html;
 }
+
