@@ -64,7 +64,7 @@ Define a subnet the wireless card.
 auto lo
 
 iface lo inet loopback
-iface eth0 inet dhcp
+iface eth0 inet manual
 
 iface wlan0 inet static
         address 192.168.42.1
