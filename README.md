@@ -11,7 +11,7 @@ Update
 
 1. Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox".
 
-* $ sudo apt-get install bridge-utils hostapd
+* $ sudo apt-get install hostapd
 
 Setting up a free wifi
 * $ sudo nano /etc/hostapd/hostapd.conf 
@@ -39,7 +39,7 @@ DAEMON_CONF="/etc/hostapd/hostapd.conf"
 Reboot 
 * $ sudo reboot
 
-Log in again see that the Pi start without errors
+* Log in again see that the Pi start without errors
 
 Tips: Check hostapd
 * $ sudo service hostapd status
