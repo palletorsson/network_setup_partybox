@@ -6,10 +6,10 @@ https://www.raspberrypi.org/documentation/installation/installing-images/README.
 * Boot and expand filesystem, change timezone, etc and reboot
 * By being on the same network as the Pi you can log into by using ssh ( user:pi password:raspberry )
 
-Update
+0. Update
 * $ sudo apt-get update
 
-1. Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox".
+1. Install hostapd. This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox".
 
 * $ sudo apt-get install hostapd
 
