@@ -1,14 +1,6 @@
 network setup partybox
 ======================
 
-I used these referances to set up the network:
-* http://www.daveconroy.com/turn-your-raspberry-pi-into-a-wifi-hotspot-with-edimax-nano-usb-ew-7811un-rtl8188cus-chipset/
-* http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
-* http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/
-* http://elinux.org/RPI-Wireless-Hotspot
-* http://andrewmichaelsmith.com/2013/08/raspberry-pi-wi-fi-honeypot/
-* https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/install-software
-
 * Prepare your Raspberry PI with a SD card with a RASPBIAN:
 https://www.raspberrypi.org/documentation/installation/installing-images/README.md
 * Boot and expand filesystem, change timezone, etc and reboot
@@ -17,7 +9,7 @@ https://www.raspberrypi.org/documentation/installation/installing-images/README.
 Update
 * $ sudo apt-get update
 
-Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox".
+1. Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to connect to the pi using the SSID "partyBox".
 
 * $ sudo apt-get install bridge-utils hostapd
 
@@ -26,7 +18,7 @@ Setting up a free wifi
 
 <pre> 
 interface=wlan0
-driver=nl80211
+driver=nl80211 
 ssid=partyBox
 hw_mode=g
 channel=6
@@ -34,6 +26,10 @@ auth_algs=1
 wmm_enabled=0 
 </pre>
 
+* driver=nl80211 
+* The driver you are using depends on what wireless card you use
+
+Also:
 * sudo nano /etc/default/hostapd
 
 <pre> 
@@ -54,43 +50,23 @@ Here is how to start, stop, restart hostapd:
 * $ /etc/init.d/hostapd stop
 * $ /etc/init.d/hostapd restart
 
-Now install dnsmasq
+2. Setting up a DHCP Server, we will use dnsmasq. In this exampel we will use 192.168.10.1 as the Pi:s IP-address and a range 192.168.10.2 to 192.168.10.250 addresses to assigne to connecting computers. 
+
+Opt 1: install dnsmasq
 * $ sudo apt-get install dnsmasq 
 * $ sudo nano /etc/dnsmasq.conf
 
 <pre>
 
-log-facility=/var/log/dnsmasq.log
 address=/#/192.168.10.1
 interface=wlan0
-dhcp-range=192.168.10.10,192.168.10.250,12h
+dhcp-range=192.168.10.2,192.168.10.250,12h
 no-resolv
-log-queries
 </pre>
 
-Setting up a DHCP Server
+Check dnsmasq
+* $ sudo service dnsmasq status
 
-* $ sudo apt-get install isc-dhcp-server
-* $ sudo nano /etc/dhcp/dhclient.conf 
-
-<pre> 
-authoritative;
-ddns-update-style none;
-default-lease-time 600;
-max-lease-time 7200;
-log-facility local7;
-
-subnet 192.168.10.1 netmask 255.255.255.0 {
-  range 192.168.10.10 192.168.42.254;
-  option broadcast-address 192.168.42.255;
-  option domain-name-servers 8.8.8.8, 8.8.4.4;
-  option routers 192.168.10.1;
-  interface wlan0;
-}
-</pre>
-
-Intermezzo
-* sudo reboot and check to see that everything seem to work.
 
 Define a subnet the wireless card.
 * $ sudo nano /etc/network/interfaces
@@ -111,19 +87,17 @@ pre-up iptables-restore < /etc/iptables.rules
 
 </pre>
 
-* $ sudo nano /etc/sysctl.conf
-* Add the following line to the bottom of the file:
-<pre> 
-
-net.ipv4.ip_forward=1
-
-</pre>
-
-Check isc-dhcp-server
-* $ sudo service isc-dhcp-server status
-
 Direct outside request to local webserver 
 <pre>
+
+* $ sudo iptables -F
+* $ sudo iptables -i wlan0 -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+* $ sudo iptables -i wlan0 -A INPUT -p tcp --dport 80 -j ACCEPT
+* $ sudo iptables -i wlan0 -A INPUT -p udp --dport 53 -j ACCEPT
+* $ sudo iptables -i wlan0 -A INPUT -p udp --dport 67:68 -j ACCEPT
+* $ sudo iptables -i wlan0 -A INPUT -j DROP
+
+* $ sudo sh -c "iptables-save > /etc/iptables.rules"
 
 #!/bin/sh
 
@@ -150,3 +124,26 @@ Reset Ip tables:
 <pre>
 * 127.0.0.1 
 </pre>
+
+
+* $ sudo nano /etc/sysctl.conf
+* Add the following line to the bottom of the file:
+<pre> 
+
+net.ipv4.ip_forward=1
+
+</pre>
+
+sudo echo "<h1>Welcome! Start your guunicorn<h1>" > /usr/share/nginx/www/index.html
+
+Now 
+* sudo reboot and check to see that everything seem to work.
+
+
+I used these referances to set up the network:
+* http://www.daveconroy.com/turn-your-raspberry-pi-into-a-wifi-hotspot-with-edimax-nano-usb-ew-7811un-rtl8188cus-chipset/
+* http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
+* http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/
+* http://elinux.org/RPI-Wireless-Hotspot
+* http://andrewmichaelsmith.com/2013/08/raspberry-pi-wi-fi-honeypot/
+* https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/install-software
