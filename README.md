@@ -18,15 +18,14 @@ Setting up a free wifi
 
 <pre> 
 interface=wlan0
-driver=nl80211 
+driver=rtl871xdrv
 ssid=partyBox
-hw_mode=g
 channel=6
 auth_algs=1
-wmm_enabled=0 
+wmm_enabled=0
 </pre>
 
-* driver=nl80211 
+* driver=rtl871xdrv (nl80211 most used)
 * The driver you are using depends on what wireless card you use
 
 Also:
@@ -57,10 +56,9 @@ Opt 1: install dnsmasq
 * $ sudo nano /etc/dnsmasq.conf
 
 <pre>
-
 address=/#/192.168.10.1
 interface=wlan0
-dhcp-range=192.168.10.2,192.168.10.250,12h
+dhcp-range=192.168.10.1,192.168.10.250,12h
 no-resolv
 </pre>
 
@@ -76,14 +74,14 @@ Define a subnet the wireless card.
 auto lo
 
 iface lo inet loopback
-iface eth0 inet dhcp
+#iface eth0 inet dhcp
 
 iface wlan0 inet static
   address 192.168.10.1
   netmask 255.255.255.0
   broadcast 255.0.0.0
 
-pre-up iptables-restore < /etc/iptables.rules
+#pre-up iptables-restore < /etc/iptables.rules
 
 </pre>
 
