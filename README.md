@@ -81,7 +81,7 @@ iface wlan0 inet static
   netmask 255.255.255.0
   broadcast 255.0.0.0
 
-#pre-up iptables-restore < /etc/iptables.rules
+pre-up iptables-restore < /etc/iptables.rules
 
 </pre>
 
