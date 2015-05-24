@@ -87,7 +87,6 @@ pre-up iptables-restore < /etc/iptables.rules
 
 Direct outside request to local webserver 
 
-
 * $ sudo iptables -F
 * $ sudo iptables -i wlan0 -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 * $ sudo iptables -i wlan0 -A INPUT -p tcp --dport 80 -j ACCEPT
@@ -96,7 +95,20 @@ Direct outside request to local webserver
 * $ sudo iptables -i wlan0 -A INPUT -j DROP
 
 * $ sudo sh -c "iptables-save > /etc/iptables.rules"
-<pre>
+
+Now 
+* sudo reboot and check to see that everything seem to work.
+
+I used these referances to set up the network:
+* http://www.daveconroy.com/turn-your-raspberry-pi-into-a-wifi-hotspot-with-edimax-nano-usb-ew-7811un-rtl8188cus-chipset/
+* http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
+* http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/
+* http://elinux.org/RPI-Wireless-Hotspot
+* http://andrewmichaelsmith.com/2013/08/raspberry-pi-wi-fi-honeypot/
+* https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/install-software
+ 
+Old ideas:
+
 #!/bin/sh
 
 echo 1 > /proc/sys/net/ipv4/ip_forward
@@ -108,15 +120,13 @@ iptables -X
 iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.10.1:80
 iptables -t nat -A POSTROUTING -p tcp -d 192.168.10.1 --dport 80 -j SNAT --to-source 192.168.10.11
 
-</pre>
 
 * $ sudo iptables -t nat -A PREROUTING -s 192.168.1.0/24 -p tcp --dport 80 -j DNAT --to-destination 192.168.10.1:80
 * $ iptables-save > /etc/iptables.up.rules
-sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+* $  sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
 
 Reset Ip tables:
 * $ sudo iptables -t nat -F
-
 
 * $ sudo nano /etc/hosts
 <pre>
@@ -134,14 +144,3 @@ net.ipv4.ip_forward=1
 
 sudo echo "Welcome! Start your Gunicorn" > /usr/share/nginx/www/index.html
 
-Now 
-* sudo reboot and check to see that everything seem to work.
-
-
-I used these referances to set up the network:
-* http://www.daveconroy.com/turn-your-raspberry-pi-into-a-wifi-hotspot-with-edimax-nano-usb-ew-7811un-rtl8188cus-chipset/
-* http://www.daveconroy.com/using-your-raspberry-pi-as-a-wireless-router-and-web-server/
-* http://raspberrypihq.com/how-to-turn-a-raspberry-pi-into-a-wifi-router/
-* http://elinux.org/RPI-Wireless-Hotspot
-* http://andrewmichaelsmith.com/2013/08/raspberry-pi-wi-fi-honeypot/
-* https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/install-software
