@@ -21,7 +21,7 @@ Install hostapd, This will allow anyone with Wi-Fi on their laptop or phone to c
 
 * $ sudo apt-get install bridge-utils hostapd
 
-Setting up a hostadp 
+Setting up a free wifi
 * $ sudo nano /etc/hostapd/hostapd.conf 
 
 <pre> 
@@ -34,6 +34,12 @@ auth_algs=1
 wmm_enabled=0 
 </pre>
 
+* sudo nano /etc/default/hostapd
+
+<pre> 
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+</pre>
+
 Reboot 
 * $ sudo reboot
 
@@ -43,21 +49,21 @@ Tips: Check hostapd
 * $ sudo service hostapd status
 * $ sudo hostapd /etc/hostapd/hostapd.conf
 
-Start, stop, restart hostapd:
+Here is how to start, stop, restart hostapd:
 * $ /etc/init.d/hostapd start
 * $ /etc/init.d/hostapd stop
 * $ /etc/init.d/hostapd restart
 
-Install dnsmasq
+Now install dnsmasq
 * $ sudo apt-get install dnsmasq 
 * $ sudo nano /etc/dnsmasq.conf
 
 <pre>
 
 log-facility=/var/log/dnsmasq.log
-address=/#/192.168.0.1
+address=/#/192.168.10.1
 interface=wlan0
-dhcp-range=192.168.0.10,192.168.0.254,12h
+dhcp-range=192.168.10.10,192.168.10.250,12h
 no-resolv
 log-queries
 </pre>
@@ -74,19 +80,13 @@ default-lease-time 600;
 max-lease-time 7200;
 log-facility local7;
 
-subnet 192.168.42.0 netmask 255.255.255.0 {
-  range 192.168.42.10 192.168.42.254;
+subnet 192.168.10.1 netmask 255.255.255.0 {
+  range 192.168.10.10 192.168.42.254;
   option broadcast-address 192.168.42.255;
   option domain-name-servers 8.8.8.8, 8.8.4.4;
-  option routers 192.168.42.1;
+  option routers 192.168.10.1;
   interface wlan0;
 }
-</pre>
-
-* sudo nano /etc/default/hostapd
-
-<pre> 
-DAEMON_CONF="/etc/hostapd/hostapd.conf"
 </pre>
 
 Intermezzo
@@ -103,7 +103,7 @@ iface lo inet loopback
 iface eth0 inet dhcp
 
 iface wlan0 inet static
-  address 10.0.0.1
+  address 192.168.10.1
   netmask 255.255.255.0
   broadcast 255.0.0.0
 
