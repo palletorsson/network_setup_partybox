@@ -109,24 +109,7 @@ I used these referances to set up the network:
  
 Old ideas:
 
-#!/bin/sh
 
-echo 1 > /proc/sys/net/ipv4/ip_forward
-
-iptables -F
-iptables -t nat -F
-iptables -X
-
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.10.1:80
-iptables -t nat -A POSTROUTING -p tcp -d 192.168.10.1 --dport 80 -j SNAT --to-source 192.168.10.11
-
-
-* $ sudo iptables -t nat -A PREROUTING -s 192.168.1.0/24 -p tcp --dport 80 -j DNAT --to-destination 192.168.10.1:80
-* $ iptables-save > /etc/iptables.up.rules
-* $  sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
-
-Reset Ip tables:
-* $ sudo iptables -t nat -F
 
 * $ sudo nano /etc/hosts
 <pre>
@@ -165,3 +148,23 @@ sudo echo "Welcome! Start your Gunicorn" > /usr/share/nginx/www/index.html
 -  interface wlan0;
 -}
 -</pre>
+
+More ip-tables ideas
+#!/bin/sh
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+iptables -F
+iptables -t nat -F
+iptables -X
+
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.10.1:80
+iptables -t nat -A POSTROUTING -p tcp -d 192.168.10.1 --dport 80 -j SNAT --to-source 192.168.10.11
+
+
+* $ sudo iptables -t nat -A PREROUTING -s 192.168.1.0/24 -p tcp --dport 80 -j DNAT --to-destination 192.168.10.1:80
+* $ iptables-save > /etc/iptables.up.rules
+* $  sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+Reset Ip tables:
+* $ sudo iptables -t nat -F
