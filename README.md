@@ -144,3 +144,24 @@ net.ipv4.ip_forward=1
 
 sudo echo "Welcome! Start your Gunicorn" > /usr/share/nginx/www/index.html
 
+
+-Setting up a isc-dhcp-server (can be used instead of dnsmasq)
+-
+-* $ sudo apt-get install isc-dhcp-server
+-* $ sudo nano /etc/dhcp/dhclient.conf 
+-
+-<pre> 
+-authoritative;
+-ddns-update-style none;
+-default-lease-time 600;
+-max-lease-time 7200;
+-log-facility local7;
+-
+-subnet 192.168.10.1 netmask 255.255.255.0 {
+-  range 192.168.10.10 192.168.42.254;
+-  option broadcast-address 192.168.42.255;
+-  option domain-name-servers 8.8.8.8, 8.8.4.4;
+-  option routers 192.168.10.1;
+-  interface wlan0;
+-}
+-</pre>
