@@ -88,7 +88,7 @@ pre-up iptables-restore < /etc/iptables.rules
 </pre>
 
 Direct outside request to local webserver 
-<pre>
+
 
 * $ sudo iptables -F
 * $ sudo iptables -i wlan0 -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
@@ -98,7 +98,7 @@ Direct outside request to local webserver
 * $ sudo iptables -i wlan0 -A INPUT -j DROP
 
 * $ sudo sh -c "iptables-save > /etc/iptables.rules"
-
+<pre>
 #!/bin/sh
 
 echo 1 > /proc/sys/net/ipv4/ip_forward
