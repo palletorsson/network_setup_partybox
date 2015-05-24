@@ -4,7 +4,7 @@ iface lo inet loopback
 iface eth0 inet dhcp
 
 iface wlan0 inet static
-        address 192.168.42.1
+        address 192.168.1.10
         netmask 255.255.255.0
         broadcast 255.0.0.0
         
