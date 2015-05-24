@@ -134,7 +134,7 @@ net.ipv4.ip_forward=1
 
 </pre>
 
-sudo echo "<h1>Welcome! Start your guunicorn<h1>" > /usr/share/nginx/www/index.html
+sudo echo "Welcome! Start your Gunicorn" > /usr/share/nginx/www/index.html
 
 Now 
 * sudo reboot and check to see that everything seem to work.
