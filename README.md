@@ -123,9 +123,25 @@ Check isc-dhcp-server
 * $ sudo service isc-dhcp-server status
 
 Direct outside request to local webserver 
+<pre>
+
+#!/bin/sh
+
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+iptables -F
+iptables -t nat -F
+iptables -X
+
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.10.1:80
+iptables -t nat -A POSTROUTING -p tcp -d 192.168.10.1 --dport 80 -j SNAT --to-source 192.168.10.11
+
+</pre>
 * $ sudo iptables -t nat -A PREROUTING -s 192.168.1.0/24 -p tcp --dport 80 -j DNAT --to-destination 192.168.10.1:80
 * $ iptables-save > /etc/iptables.up.rules
 sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+sudo iptables -t nat -F
 
 * $ sudo nano /etc/hosts
 <pre>
